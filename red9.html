@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rede Metabólica: Ácido Oxaloacético - CNM13</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .mermaid-container {
+            width: 100%;
+            height: calc(100vh - 160px);
+            overflow: auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            cursor: grab;
+        }
+        .mermaid-container:active { cursor: grabbing; }
+        .mermaid svg {
+            max-width: none !important;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="text-slate-800 flex flex-col min-h-screen">
+    
+    <header class="bg-slate-900 text-white p-5 shadow-md shrink-0">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-2xl font-bold tracking-tight">Mapa Metabólico: Ácido Oxaloacético e Interseção Metabólica</h1>
+                <p class="text-slate-400 text-sm mt-1">Priestia aryabhattai CNM13 - Seção 2.13 (Válvulas Anapleróticas e Hub do TCA)</p>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[10px] uppercase tracking-wider">
+                <span class="px-2 py-1 bg-slate-800 border border-slate-600 rounded text-slate-300">Esqueletos Carbônicos</span>
+                <span class="px-2 py-1 bg-blue-900 border border-blue-700 rounded text-blue-300">Oxidação e Energia</span>
+                <span class="px-2 py-1 bg-green-900 border border-green-700 rounded text-green-300">Fixação de CO2 (Anaplerose)</span>
+                <span class="px-2 py-1 bg-rose-900 border border-rose-700 rounded text-rose-300">Fitoestimulação Cruzada</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow p-4 md:p-6 max-w-[100vw] mx-auto w-full">
+        
+        <div class="mb-4 text-xs text-slate-600 bg-slate-100 border border-slate-200 p-3 rounded flex items-center gap-3">
+            <svg class="w-5 h-5 text-slate-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <p><strong>Navegação:</strong> Clique e arraste. Este fluxograma evidencia o Ácido Oxaloacético como o "Hub Mestre". Note as duas frentes principais: as desidrogenases oxidando malato e gerando energia (mdh/mqo), e as válvulas anapleróticas (pckA/pyc) que fixam CO2 e convertem açúcares simples num escudo quelante formidável, sinalizando simultaneamente para o crescimento radicular (Auxina).</p>
+        </div>
+
+        <div class="mermaid-container" id="pan-container">
+            <div class="mermaid flex justify-center min-w-max">
+                flowchart TD
+                    classDef substrato fill:#f1f5f9,stroke:#475569,stroke-width:1px,color:#0f172a,rx:4px,ry:4px,stroke-dasharray: 4 4;
+                    classDef oxidacao fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a8a,rx:4px,ry:4px;
+                    classDef anaplerotica fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#064e3b,rx:4px,ry:4px;
+                    classDef hub fill:#c7d2fe,stroke:#4338ca,stroke-width:2px,color:#312e81,rx:8px,ry:8px,font-weight:bold;
+                    classDef produto fill:#fef9c3,stroke:#ca8a04,stroke-width:1px,color:#713f12,rx:4px,ry:4px;
+                    classDef fito fill:#fce7f3,stroke:#db2777,stroke-width:2px,color:#831843,rx:8px,ry:8px,font-weight:bold;
+                    classDef impacto fill:#fee2e2,stroke:#dc2626,stroke-width:1px,color:#7f1d1d,rx:4px,ry:4px,font-weight:bold;
+
+                    subgraph Mod1 ["Módulo 1: Insumos e Vias Glicolíticas (Exsudatos)"]
+                        direction TB
+                        SUB_ACE["Acetato de Cadeia Curta<br/>(Resíduos Simples)"]:::substrato
+                        SUB_MAL["Ácido Málico<br/>(Sinalização/Exsudato Vegetal)"]:::substrato
+                        SUB_PEP["Fosfoenolpiruvato (PEP)<br/>(Derivado da Mucilagem)"]:::substrato
+                        SUB_PIR["Ácido Pirúvico<br/>(Pool Abundante)"]:::substrato
+                    end
+
+                    subgraph Mod2 ["Módulo 2: O Atalho e a Oxidação Bioenergética"]
+                        direction TB
+                        ENZ_ACEB["aceB | glcB (Malato Sintase)<br/>Ciclo do Glioxalato (Reciclagem de C2)"]:::oxidacao
+                        ENZ_MDH["mdh (Malato Desidrogenase)<br/>Oxidação Citosólica"]:::oxidacao
+                        ENZ_MQO["mqo (Malato:Quinona Oxidorredutase)<br/>Oxidação na Membrana"]:::oxidacao
+                    end
+
+                    subgraph Mod3 ["Módulo 3: Válvulas Anapleróticas (Fixação de CO2)"]
+                        direction TB
+                        ENZ_PCKA["pckA (Fosfoenolpiruvato Carboxiquinase)<br/>Ponte Glicolítica Direta"]:::anaplerotica
+                        ENZ_PYC["pyc (Piruvato Carboxilase)<br/>Reabastecimento Maciço (Usa ATP)"]:::anaplerotica
+                    end
+
+                    subgraph Mod4 ["Módulo 4: O Hub Central e Subprodutos"]
+                        direction LR
+                        OXALO["ÁCIDO OXALOACÉTICO<br/>(Dicarboxilato / Garra Mineral)"]:::hub
+                        ENERGIA["NADH e ATP<br/>(Poder Redutor e Prótons)"]:::produto
+                        AUXINA["Auxina (AIA)<br/>Fito-hormônio de Crescimento"]:::fito
+                    end
+
+                    subgraph Mod5 ["Módulo 5: Consórcio Nutrição-Fitoestimulação"]
+                        direction LR
+                        IMP_QUEL["Quelação Pesada<br/>Sequestro de Ca²⁺, Al³⁺, Fe³⁺"]:::impacto
+                        IMP_SOL["Desestabilização Mineral<br/>Liberação Maciça de Fosfato"]:::impacto
+                        IMP_RAM["Ramificação Radicular<br/>Expansão direcionada da raiz"]:::impacto
+                    end
+
+                    %% Fluxos do Glioxalato e Oxidação
+                    SUB_ACE --> ENZ_ACEB
+                    ENZ_ACEB ===>|"Sintetiza Intermediário"| SUB_MAL
+                    
+                    SUB_MAL --> ENZ_MDH
+                    SUB_MAL --> ENZ_MQO
+                    
+                    ENZ_MDH ===>|"Clivagem Termodinâmica"| OXALO
+                    ENZ_MDH -.->|"Elétrons Solúveis"| ENERGIA
+                    
+                    ENZ_MQO ===>|"Injeção Rápida no TCA"| OXALO
+                    ENZ_MQO -.->|"Pool de Quinonas"| ENERGIA
+
+                    %% Fluxos Anapleróticos
+                    SUB_PEP --> ENZ_PCKA
+                    ENZ_PCKA ===>|"Fixação de CO2"| OXALO
+
+                    SUB_PIR --> ENZ_PYC
+                    ENZ_PYC ===>|"Fixação de CO2 (Dependente de ATP)"| OXALO
+                    
+                    %% Regulação Hormonal Cruzada
+                    ENZ_PYC -.->|"Modulação do Pool (Indol-3-acetaldeído)"| AUXINA
+
+                    %% Impactos e Efluxo
+                    OXALO ===>|"Ação na Rizosfera"| IMP_QUEL
+                    IMP_QUEL ===> IMP_SOL
+                    
+                    AUXINA ===>|"Estimulação Física"| IMP_RAM
+            </div>
+        </div>
+    </main>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'base',
+            themeVariables: {
+                fontFamily: 'Inter, sans-serif',
+                lineColor: '#94a3b8'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'monotoneX',
+                nodeSpacing: 50,
+                rankSpacing: 60
+            }
+        });
+
+        const slider = document.getElementById('pan-container');
+        let isDown = false;
+        let startX;
+        let startY;
+        let scrollLeft;
+        let scrollTop;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            startY = e.pageY - slider.offsetTop;
+            scrollLeft = slider.scrollLeft;
+            scrollTop = slider.scrollTop;
+        });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const y = e.pageY - slider.offsetTop;
+            const walkX = (x - startX) * 1.5;
+            const walkY = (y - startY) * 1.5;
+            slider.scrollLeft = scrollLeft - walkX;
+            slider.scrollTop = scrollTop - walkY;
+        });
+    </script>
+</body>
+</html>

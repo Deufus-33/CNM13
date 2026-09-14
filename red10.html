@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rede Metabólica: Ácido Glicólico - CNM13</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .mermaid-container {
+            width: 100%;
+            height: calc(100vh - 160px);
+            overflow: auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            cursor: grab;
+        }
+        .mermaid-container:active { cursor: grabbing; }
+        .mermaid svg {
+            max-width: none !important;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="text-slate-800 flex flex-col min-h-screen">
+    
+    <header class="bg-slate-900 text-white p-5 shadow-md shrink-0">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-2xl font-bold tracking-tight">Mapa Metabólico: Ácido Glicólico e Quelantes Leves</h1>
+                <p class="text-slate-400 text-sm mt-1">Priestia aryabhattai CNM13 - Seção 2.14 (RuBisCO e Reparação Genômica)</p>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[10px] uppercase tracking-wider">
+                <span class="px-2 py-1 bg-slate-800 border border-slate-600 rounded text-slate-300">Gatilhos de Estresse</span>
+                <span class="px-2 py-1 bg-green-900 border border-green-700 rounded text-green-300">Autotrofia (RuBisCO)</span>
+                <span class="px-2 py-1 bg-pink-900 border border-pink-700 rounded text-pink-300">Desintoxicação de DNA</span>
+                <span class="px-2 py-1 bg-blue-900 border border-blue-700 rounded text-blue-300">Infiltração Profunda</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow p-4 md:p-6 max-w-[100vw] mx-auto w-full">
+        
+        <div class="mb-4 text-xs text-slate-600 bg-slate-100 border border-slate-200 p-3 rounded flex items-center gap-3">
+            <svg class="w-5 h-5 text-slate-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <p><strong>Navegação:</strong> Clique e arraste. Este fluxograma evidencia o Ácido Glicólico como uma arma de infiltração. Note como a bactéria aproveita dois eventos aparentemente ruins (danos no próprio DNA e a "falha" da RuBisCO em fixar Oxigênio) para gerar um lixo tóxico que a enzima gph purifica, ejetando o ácido de alta mobilidade no solo.</p>
+        </div>
+
+        <div class="mermaid-container" id="pan-container">
+            <div class="mermaid flex justify-center min-w-max">
+                flowchart TD
+                    classDef substrato fill:#f1f5f9,stroke:#475569,stroke-width:1px,color:#0f172a,rx:4px,ry:4px,stroke-dasharray: 4 4;
+                    classDef enzima fill:#fef9c3,stroke:#ca8a04,stroke-width:1px,color:#422006,rx:4px,ry:4px;
+                    classDef rubisco fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#064e3b,rx:4px,ry:4px,font-weight:bold;
+                    classDef reparo fill:#fce7f3,stroke:#be185d,stroke-width:2px,color:#831843,rx:4px,ry:4px,font-weight:bold;
+                    classDef toxico fill:#fef08a,stroke:#b45309,stroke-width:1px,color:#451a03,rx:8px,ry:8px;
+                    classDef acido fill:#fee2e2,stroke:#b91c1c,stroke-width:2px,color:#7f1d1d,rx:8px,ry:8px,font-weight:bold;
+                    classDef impacto fill:#dbeafe,stroke:#2563eb,stroke-width:1px,color:#172554,rx:4px,ry:4px,font-weight:bold;
+
+                    subgraph Mod1 ["Módulo 1: Gatilhos Aeróbicos e Estresse Genômico"]
+                        direction LR
+                        SUB_GAS["Oxigênio (O2) Elevado<br/>(Interface Rizosférica Aerada)"]:::substrato
+                        SUB_ESTRESSE["Dessecação / Toxicidade / ROS<br/>(Agressão Severa ao Genoma)"]:::substrato
+                        DNA["Lesões e Quebras no DNA<br/>(Gatilho de Reparo)"]:::substrato
+                    end
+
+                    subgraph Mod2 ["Módulo 2: Geradores de Resíduos e Atividade Oxigenase"]
+                        direction TB
+                        ENZ_RUB["rbcL | cbbL (RuBisCO)<br/>Atividade Oxigenase (Fixação de O2)"]:::rubisco
+                        RES_TOX["2-Fosfoglicolato<br/>(Lixo Tóxico e Letal Celular)"]:::toxico
+                        ENZ_GPH["gph (Fosfoglicolato Fosfatase)<br/>7 Parálogos: Funil de Desintoxicação"]:::reparo
+                    end
+
+                    subgraph Mod3 ["Módulo 3: O Quelante de Alta Mobilidade"]
+                        direction LR
+                        GLICOLICO["ÁCIDO GLICÓLICO<br/>(Alfa-hidroxiácido de Menor Massa)"]:::acido
+                    end
+
+                    subgraph Mod4 ["Módulo 4: Infiltração e Intemperismo Biológico"]
+                        direction LR
+                        IMP_MOB["Mobilidade Espacial Altíssima<br/>(Difusão Acelerada no Solo)"]:::impacto
+                        IMP_POROS["Penetração em Microporos<br/>Invasão de microfissuras minerais"]:::impacto
+                        IMP_SOL["Intemperismo Profundo<br/>Dissolução de Complexos Recalcitrantes"]:::impacto
+                    end
+
+                    %% Fluxos de Geração de 2-Fosfoglicolato
+                    SUB_ESTRESSE --> DNA
+                    DNA -.->|"Reparação do Genoma"| RES_TOX
+                    
+                    SUB_GAS --> ENZ_RUB
+                    ENZ_RUB ===>|"Fotorrespiração Hackeada"| RES_TOX
+
+                    %% Fluxo de Desintoxicação
+                    RES_TOX --> ENZ_GPH
+                    ENZ_GPH ===>|"Evita o Colapso Celular (Desfosforilação)"| GLICOLICO
+
+                    %% Efeitos na Rizosfera
+                    GLICOLICO ===> IMP_MOB
+                    IMP_MOB ===> IMP_POROS
+                    IMP_POROS ===> IMP_SOL
+            </div>
+        </div>
+    </main>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'base',
+            themeVariables: {
+                fontFamily: 'Inter, sans-serif',
+                lineColor: '#94a3b8'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'monotoneX',
+                nodeSpacing: 50,
+                rankSpacing: 60
+            }
+        });
+
+        const slider = document.getElementById('pan-container');
+        let isDown = false;
+        let startX;
+        let startY;
+        let scrollLeft;
+        let scrollTop;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            startY = e.pageY - slider.offsetTop;
+            scrollLeft = slider.scrollLeft;
+            scrollTop = slider.scrollTop;
+        });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const y = e.pageY - slider.offsetTop;
+            const walkX = (x - startX) * 1.5;
+            const walkY = (y - startY) * 1.5;
+            slider.scrollLeft = scrollLeft - walkX;
+            slider.scrollTop = scrollTop - walkY;
+        });
+    </script>
+</body>
+</html>

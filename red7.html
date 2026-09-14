@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rede Metabólica: Ácido Malônico e Proteção - CNM13</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .mermaid-container {
+            width: 100%;
+            height: calc(100vh - 160px);
+            overflow: auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            cursor: grab;
+        }
+        .mermaid-container:active { cursor: grabbing; }
+        .mermaid svg {
+            max-width: none !important;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="text-slate-800 flex flex-col min-h-screen">
+    
+    <header class="bg-slate-900 text-white p-5 shadow-md shrink-0">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-2xl font-bold tracking-tight">Mapa Metabólico: Ácido Malônico e Biodefesa Radicular</h1>
+                <p class="text-slate-400 text-sm mt-1">Priestia aryabhattai CNM13 - Seção 2.11 (Complexo Carboxilase e Inibição Competitiva)</p>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[10px] uppercase tracking-wider">
+                <span class="px-2 py-1 bg-slate-800 border border-slate-600 rounded text-slate-300">Insumos de Carbono</span>
+                <span class="px-2 py-1 bg-amber-900 border border-amber-700 rounded text-amber-300">Complexo Vitamina B7</span>
+                <span class="px-2 py-1 bg-indigo-900 border border-indigo-700 rounded text-indigo-300">Sinalização (VOCs)</span>
+                <span class="px-2 py-1 bg-red-900 border border-red-700 rounded text-red-300">Arma Biológica Dicarboxílica</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow p-4 md:p-6 max-w-[100vw] mx-auto w-full">
+        
+        <div class="mb-4 text-xs text-slate-600 bg-slate-100 border border-slate-200 p-3 rounded flex items-center gap-3">
+            <svg class="w-5 h-5 text-slate-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <p><strong>Navegação:</strong> Clique e arraste. Este fluxograma revela o maquinário de precisão (dependente de Biotina) usado para forjar o Ácido Malônico. Observe o duplo impacto deste ácido na rizosfera: atua como quelante para derreter rochas e como um biodefensivo natural que "asfixia" patógenos bloqueando sua respiração.</p>
+        </div>
+
+        <div class="mermaid-container" id="pan-container">
+            <div class="mermaid flex justify-center min-w-max">
+                flowchart TD
+                    classDef substrato fill:#f1f5f9,stroke:#475569,stroke-width:1px,color:#0f172a,rx:4px,ry:4px,stroke-dasharray: 4 4;
+                    classDef enzima fill:#fef9c3,stroke:#ca8a04,stroke-width:1px,color:#422006,rx:4px,ry:4px;
+                    classDef biotina fill:#fef08a,stroke:#b45309,stroke-width:2px,color:#451a03,rx:4px,ry:4px,font-weight:bold;
+                    classDef hub fill:#c7d2fe,stroke:#4338ca,stroke-width:2px,color:#312e81,rx:8px,ry:8px,font-weight:bold;
+                    classDef acido fill:#fee2e2,stroke:#b91c1c,stroke-width:2px,color:#7f1d1d,rx:8px,ry:8px,font-weight:bold;
+                    classDef impacto fill:#dbeafe,stroke:#2563eb,stroke-width:1px,color:#172554,rx:4px,ry:4px,font-weight:bold;
+
+                    subgraph Mod1 ["Módulo 1: Afluentes e Energia Celular"]
+                        direction LR
+                        SUB_CO2["Dióxido de Carbono (CO2) + ATP<br/>(Combustível Celular)"]:::substrato
+                        SUB_ACOA["Acetil-CoA<br/>(Pool Intracelular Primário)"]:::substrato
+                        SUB_PROP["Resíduos de Propionato<br/>(Reciclados da rizosfera/célula)"]:::substrato
+                    end
+
+                    subgraph Mod2 ["Módulo 2: O Complexo Carboxilase (Dep. Vitamina B7)"]
+                        direction TB
+                        ENZ_ACCC["accC (Biotina Carboxilase)<br/>Hidrólise de ATP e Fixação de CO2"]:::biotina
+                        ENZ_ACCB["accB | bccP (Carreadora de Biotina)<br/>Braço Mecânico de Transporte"]:::biotina
+                        ENZ_ACCA_D["accA + accD (Carboxiltransferases)<br/>Transferência irreversível do CO2"]:::biotina
+                        ENZ_PCCB["pccB (Propionil-CoA Carboxilase)<br/>Cruzamento Metabólico (Reciclagem de 3C)"]:::enzima
+                    end
+
+                    subgraph Mod3 ["Módulo 3: O Hub Estratégico e Subprodutos"]
+                        direction TB
+                        MALONIL["Malonil-CoA<br/>(Ponto de Partida e Hub Intermediário)"]:::hub
+                        VOCS["Gases Voláteis (VOCs)<br/>(Sinalização e Elicitação)"]:::hub
+                        MALONICO["ÁCIDO MALÔNICO<br/>(Solvente Dicarboxílico C3H4O4)"]:::acido
+                    end
+
+                    subgraph Mod4 ["Módulo 4: Dupla Ação de Fronteira"]
+                        direction LR
+                        IMP_SOL["Desestabilização Mineral<br/>Quelação de Al³⁺, Fe³⁺ e Ca²⁺"]:::impacto
+                        IMP_PAT["Biodefensivo Natural<br/>Inibe a Succinato Desidrogenase de Patógenos"]:::impacto
+                        IMP_ISR["Resistência Sistêmica Induzida<br/>Armamento Imunológico da Planta"]:::impacto
+                    end
+
+                    %% Fluxos do Complexo Principal
+                    SUB_CO2 --> ENZ_ACCC
+                    ENZ_ACCC ===>|"Ativação da Biotina"| ENZ_ACCB
+                    ENZ_ACCB ===>|"Doa o CO2 Ativado"| ENZ_ACCA_D
+                    SUB_ACOA --> ENZ_ACCA_D
+                    ENZ_ACCA_D ===>|"Síntese Primária"| MALONIL
+
+                    %% Fluxo de Reciclagem
+                    SUB_PROP --> ENZ_PCCB
+                    ENZ_PCCB ===>|"Calibração de Carbono Residual"| MALONIL
+
+                    %% Desdobramento do Hub
+                    MALONIL ===>|"Ejeção e Exsudação"| MALONICO
+                    MALONIL -.->|"Derivação Metabólica"| VOCS
+
+                    %% Impactos na Rizosfera
+                    MALONICO ===>|"Ataque Químico às Rochas"| IMP_SOL
+                    MALONICO ===>|"Guerra Biológica (Asfixia Rivais)"| IMP_PAT
+                    VOCS -.->|"Sinalização Radicular"| IMP_ISR
+            </div>
+        </div>
+    </main>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'base',
+            themeVariables: {
+                fontFamily: 'Inter, sans-serif',
+                lineColor: '#94a3b8'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'monotoneX',
+                nodeSpacing: 50,
+                rankSpacing: 60
+            }
+        });
+
+        const slider = document.getElementById('pan-container');
+        let isDown = false;
+        let startX;
+        let startY;
+        let scrollLeft;
+        let scrollTop;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            startY = e.pageY - slider.offsetTop;
+            scrollLeft = slider.scrollLeft;
+            scrollTop = slider.scrollTop;
+        });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const y = e.pageY - slider.offsetTop;
+            const walkX = (x - startX) * 1.5;
+            const walkY = (y - startY) * 1.5;
+            slider.scrollLeft = scrollLeft - walkX;
+            slider.scrollTop = scrollTop - walkY;
+        });
+    </script>
+</body>
+</html>
