@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rede Metabólica: Ácido Valérico - CNM13</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .mermaid-container {
+            width: 100%;
+            height: calc(100vh - 160px);
+            overflow: auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            cursor: grab;
+        }
+        .mermaid-container:active { cursor: grabbing; }
+        .mermaid svg {
+            max-width: none !important;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="text-slate-800 flex flex-col min-h-screen">
+    
+    <header class="bg-slate-900 text-white p-5 shadow-md shrink-0">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-2xl font-bold tracking-tight">Mapa Metabólico: Ácido Valérico e Dinâmica Tensoativa</h1>
+                <p class="text-slate-400 text-sm mt-1">Priestia aryabhattai CNM13 - Seção 2.16 (Cadeia Curta, Desintoxicação e Vitamina B5)</p>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[10px] uppercase tracking-wider">
+                <span class="px-2 py-1 bg-slate-800 border border-slate-600 rounded text-slate-300">Valina e Xenobióticos</span>
+                <span class="px-2 py-1 bg-amber-900 border border-amber-700 rounded text-amber-300">Biossíntese Vitamínica</span>
+                <span class="px-2 py-1 bg-pink-900 border border-pink-700 rounded text-pink-300">Desarme de Defesas (HCAs)</span>
+                <span class="px-2 py-1 bg-blue-900 border border-blue-700 rounded text-blue-300">Solvente Organomineral</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow p-4 md:p-6 max-w-[100vw] mx-auto w-full">
+        
+        <div class="mb-4 text-xs text-slate-600 bg-slate-100 border border-slate-200 p-3 rounded flex items-center gap-3">
+            <svg class="w-5 h-5 text-slate-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <p><strong>Navegação:</strong> Clique e arraste. Este mapa ilustra como a bactéria converte Valina radicular e "hackeia" as defesas tóxicas da planta (HCAs) para forjar Ácido Valérico. Observe o ganho secundário brilhante: além do solvente mineral, a via gera Amônia e Vitamina B5, retroalimentando o vigor da raiz.</p>
+        </div>
+
+        <div class="mermaid-container" id="pan-container">
+            <div class="mermaid flex justify-center min-w-max">
+                flowchart TD
+                    classDef substrato fill:#f1f5f9,stroke:#475569,stroke-width:1px,color:#0f172a,rx:4px,ry:4px,stroke-dasharray: 4 4;
+                    classDef enzima fill:#fef9c3,stroke:#ca8a04,stroke-width:1px,color:#422006,rx:4px,ry:4px;
+                    classDef defesa fill:#fee2e2,stroke:#b91c1c,stroke-width:1px,color:#7f1d1d,rx:4px,ry:4px,stroke-dasharray: 4 4;
+                    classDef hub fill:#c7d2fe,stroke:#4338ca,stroke-width:2px,color:#312e81,rx:8px,ry:8px,font-weight:bold;
+                    classDef vit fill:#fef08a,stroke:#b45309,stroke-width:1px,color:#451a03,rx:4px,ry:4px;
+                    classDef impacto fill:#dbeafe,stroke:#2563eb,stroke-width:1px,color:#172554,rx:4px,ry:4px,font-weight:bold;
+
+                    subgraph Mod1 ["Módulo 1: Exsudatos e Barreiras Químicas"]
+                        direction LR
+                        SUB_VAL["Valina<br/>(Aminoácido Radicular Abundante)"]:::substrato
+                        SUB_HCA["Ácidos Hidroxicinâmicos (HCAs)<br/>(Toxinas / Imunidade Vegetal)"]:::defesa
+                        SUB_POL["Xenobióticos Ambientais<br/>(Estireno, Fenilacetato)"]:::defesa
+                    end
+
+                    subgraph Mod2 ["Módulo 2: Maquinaria de Biorrefino e Desintoxicação"]
+                        direction TB
+                        ENZ_ACTA["actA (Aminotransferase)<br/>Transaminação (Dependente de PLP / Vit. B6)"]:::enzima
+                        ENZ_ILVD["ilvD (Dihidroxi-ácido Desidratase)<br/>Desidratação e Entroncamento Parabólico"]:::enzima
+                        ENZ_PAAF["paaF | echA (Enoil-CoA Hidratase)<br/>Neutralização de Aromáticos / Hidratação"]:::enzima
+                    end
+
+                    subgraph Mod3 ["Módulo 3: O Hub Tensoativo e Subprodutos"]
+                        direction TB
+                        VALERICO["ÁCIDO VALÉRICO (5 Carbonos)<br/>(SCFA de Perfil Hidrofóbico/Tensoativo)"]:::hub
+                        VITB5["Vitamina B5<br/>(Ácido Pantotênico)"]:::vit
+                        AMONIA["Amônia (NH3)<br/>(Nutrição Nitrogenada Direta)"]:::vit
+                    end
+
+                    subgraph Mod4 ["Módulo 4: Condicionamento Global da Rizosfera"]
+                        direction LR
+                        IMP_SOL["Desestabilização Organomineral<br/>Infiltração Profunda e Queda de pH"]:::impacto
+                        IMP_FUN["Ação Antifúngica<br/>Bloqueio do crescimento hifal competidor"]:::impacto
+                        IMP_RAIZ["Fitoestimulação e Vigor<br/>Alongamento celular e resiliência radicular"]:::impacto
+                    end
+
+                    %% Eixo da Valina
+                    SUB_VAL --> ENZ_ACTA
+                    ENZ_ACTA ===>|"Gera Cetoácido Precursor"| ENZ_ILVD
+                    ENZ_ACTA -.->|"Desaminação Primária"| AMONIA
+
+                    %% Eixo de Desidratação e Vitamina
+                    ENZ_ILVD ===>|"Avanço do Fluxo Carbônico"| VALERICO
+                    ENZ_ILVD -.->|"Biossíntese Acoplada"| VITB5
+
+                    %% Eixo das Toxinas/Poluentes
+                    SUB_HCA --> ENZ_PAAF
+                    SUB_POL --> ENZ_PAAF
+                    ENZ_PAAF ===>|"Canalização de Carbono Aromático"| VALERICO
+
+                    %% Impactos e Funções
+                    VALERICO ===>|"Efeito Tensoativo no Solo"| IMP_SOL
+                    VALERICO ===>|"Arma Química Exsudada"| IMP_FUN
+                    
+                    VITB5 ===>|"Biostimulante de Absorção Rápida"| IMP_RAIZ
+                    AMONIA ===> IMP_RAIZ
+            </div>
+        </div>
+    </main>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'base',
+            themeVariables: {
+                fontFamily: 'Inter, sans-serif',
+                lineColor: '#94a3b8'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'monotoneX',
+                nodeSpacing: 50,
+                rankSpacing: 60
+            }
+        });
+
+        const slider = document.getElementById('pan-container');
+        let isDown = false;
+        let startX;
+        let startY;
+        let scrollLeft;
+        let scrollTop;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            startY = e.pageY - slider.offsetTop;
+            scrollLeft = slider.scrollLeft;
+            scrollTop = slider.scrollTop;
+        });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const y = e.pageY - slider.offsetTop;
+            const walkX = (x - startX) * 1.5;
+            const walkY = (y - startY) * 1.5;
+            slider.scrollLeft = scrollLeft - walkX;
+            slider.scrollTop = scrollTop - walkY;
+        });
+    </script>
+</body>
+</html>

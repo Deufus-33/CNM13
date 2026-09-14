@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rede Metabólica: Ácido Glicônico e Via PQQ - CNM13</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .mermaid-container {
+            width: 100%;
+            height: calc(100vh - 160px);
+            overflow: auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            cursor: grab;
+        }
+        .mermaid-container:active { cursor: grabbing; }
+        .mermaid svg {
+            max-width: none !important;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="text-slate-800 flex flex-col min-h-screen">
+    
+    <header class="bg-slate-900 text-white p-5 shadow-md shrink-0">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-2xl font-bold tracking-tight">Mapa Metabólico: Ácido Glicônico e Via PQQ</h1>
+                <p class="text-slate-400 text-sm mt-1">Priestia aryabhattai CNM13 - Seção 2.21 (Oxidação Direta e Cofatores Redox)</p>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[10px] uppercase tracking-wider">
+                <span class="px-2 py-1 bg-slate-800 border border-slate-600 rounded text-slate-300">Oxidação Periplasmática</span>
+                <span class="px-2 py-1 bg-amber-900 border border-amber-700 rounded text-amber-300">Biossíntese de Cofator (PQQ)</span>
+                <span class="px-2 py-1 bg-teal-900 border border-teal-700 rounded text-teal-300">Osmoproteção (Prolina)</span>
+                <span class="px-2 py-1 bg-blue-900 border border-blue-700 rounded text-blue-300">Solventes Fortes</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow p-4 md:p-6 max-w-[100vw] mx-auto w-full">
+        
+        <div class="mb-4 text-xs text-slate-600 bg-slate-100 border border-slate-200 p-3 rounded flex items-center gap-3">
+            <svg class="w-5 h-5 text-slate-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <p><strong>Navegação:</strong> Clique e arraste. Este fluxograma revela a genialidade da via PQQ: em vez de consumir a glicose da raiz para gerar energia interna, a bactéria exporta a máquina (Holo-GDH) para oxidar a glicose do lado de fora, transformando-a diretamente no potente Ácido Glicônico. Paralelamente, o sistema sintetiza Prolina para blindar a célula contra salinidade.</p>
+        </div>
+
+        <div class="mermaid-container" id="pan-container">
+            <div class="mermaid flex justify-center min-w-max">
+                flowchart TD
+                    classDef substrato fill:#f1f5f9,stroke:#475569,stroke-width:1px,color:#0f172a,rx:4px,ry:4px,stroke-dasharray: 4 4;
+                    classDef enzima fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#064e3b,rx:4px,ry:4px;
+                    classDef cofator fill:#fef08a,stroke:#b45309,stroke-width:2px,color:#451a03,rx:4px,ry:4px;
+                    classDef hub fill:#c7d2fe,stroke:#4338ca,stroke-width:2px,color:#312e81,rx:8px,ry:8px,font-weight:bold;
+                    classDef acido fill:#fee2e2,stroke:#b91c1c,stroke-width:2px,color:#7f1d1d,rx:8px,ry:8px,font-weight:bold;
+                    classDef prot fill:#ccfbf1,stroke:#0f766e,stroke-width:1px,color:#042f2e,rx:4px,ry:4px;
+                    classDef impacto fill:#dbeafe,stroke:#2563eb,stroke-width:1px,color:#172554,rx:4px,ry:4px,font-weight:bold;
+
+                    subgraph Mod1 ["Módulo 1: Linha de Montagem do Cofator e Proteção"]
+                        direction TB
+                        ENZ_ARGD["argD | pqqI (Aminotransferase)<br/>Transaminação Auxiliar (PLP-dependente)"]:::enzima
+                        PROLINA["Prolina<br/>(Osmoprotetor Celular Primário)"]:::prot
+                        PRE_PQQ["Peptídeo Precursor de PQQ"]:::substrato
+                        
+                        ENZ_PQQL["pqqL | yddC (Metalopeptidase)<br/>Clivagem Proteolítica e Maturação"]:::enzima
+                        PQQ_MADURO["Cofator PQQ Maduro<br/>(Pirroloquinolina Quinona)"]:::cofator
+                    end
+
+                    subgraph Mod2 ["Módulo 2: Montagem do Complexo Holoenzimático"]
+                        direction TB
+                        APO_GDH["Apo-GDH<br/>(Glicose Desidrogenase Inativa)"]:::substrato
+                        HOLO_GDH["Complexo Holo-GDH Ativo<br/>(Oxidação Periplasmática / Extracelular)"]:::hub
+                    end
+
+                    subgraph Mod3 ["Módulo 3: Oxidação Direta (Desvinculada da Glicólise)"]
+                        direction TB
+                        GLICOSE["D-Glicose<br/>(Monossacarídeo no Solo)"]:::substrato
+                        LACTONA["D-glucono-1,5-lactona<br/>(Intermediário de Oxidação)"]:::substrato
+                        GLICONICO["ÁCIDO GLICÔNICO<br/>(Forte Agente Acidificante)"]:::acido
+                    end
+
+                    subgraph Mod4 ["Módulo 4: Duplo Benefício Agronômico"]
+                        direction LR
+                        IMP_OSMO["Resiliência Osmótica<br/>Mitigação de Estresse Salino"]:::impacto
+                        IMP_SOL["Desestabilização Mineral<br/>Intemperismo de Fosfatos de Cálcio"]:::impacto
+                    end
+
+                    %% Fluxo de Maturação do Cofator e Prolina
+                    ENZ_ARGD ===>|"Montagem Inicial"| PRE_PQQ
+                    ENZ_ARGD -.->|"Tag: SALINITY_STRESS"| PROLINA
+                    
+                    PRE_PQQ --> ENZ_PQQL
+                    ENZ_PQQL ===>|"Excisão"| PQQ_MADURO
+
+                    %% Formação da Holoenzima
+                    PQQ_MADURO -->|"Acoplamento Cofator-Apoenzima"| HOLO_GDH
+                    APO_GDH --> HOLO_GDH
+
+                    %% Catálise Extracelular
+                    GLICOSE -->|"Ação do Complexo"| HOLO_GDH
+                    HOLO_GDH ===>|"Oxidação Direta"| LACTONA
+                    LACTONA ===>|"Hidrólise Contínua"| GLICONICO
+
+                    %% Efeitos Finais
+                    PROLINA ===> IMP_OSMO
+                    GLICONICO ===>|"Acidificação do Meio"| IMP_SOL
+            </div>
+        </div>
+    </main>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'base',
+            themeVariables: {
+                fontFamily: 'Inter, sans-serif',
+                lineColor: '#94a3b8'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'monotoneX',
+                nodeSpacing: 50,
+                rankSpacing: 60
+            }
+        });
+
+        const slider = document.getElementById('pan-container');
+        let isDown = false;
+        let startX;
+        let startY;
+        let scrollLeft;
+        let scrollTop;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            startY = e.pageY - slider.offsetTop;
+            scrollLeft = slider.scrollLeft;
+            scrollTop = slider.scrollTop;
+        });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const y = e.pageY - slider.offsetTop;
+            const walkX = (x - startX) * 1.5;
+            const walkY = (y - startY) * 1.5;
+            slider.scrollLeft = scrollLeft - walkX;
+            slider.scrollTop = scrollTop - walkY;
+        });
+    </script>
+</body>
+</html>
