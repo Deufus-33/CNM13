@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super-Sistema 4: Cadeias Curtas e Biodefesa - CNM13</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; }
+        .mermaid-container {
+            width: 100%;
+            height: calc(100vh - 160px);
+            overflow: auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            cursor: grab;
+        }
+        .mermaid-container:active { cursor: grabbing; }
+        .mermaid svg {
+            max-width: none !important;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="text-slate-800 flex flex-col min-h-screen">
+    
+    <header class="bg-slate-900 text-white p-5 shadow-xl shrink-0 border-b-4 border-amber-500">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-2xl font-bold tracking-tight">Super-Sistema 4: Cadeias Curtas, VOCs e Biodefesa</h1>
+                <p class="text-amber-300 text-sm mt-1">Integração dos Ácidos Acético, Butírico, Propiônico e Valérico</p>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[10px] uppercase tracking-wider font-bold">
+                <span class="px-2 py-1 bg-slate-800 border border-slate-600 rounded text-slate-300">Reciclagem de Detritos</span>
+                <span class="px-2 py-1 bg-amber-900 border border-amber-700 rounded text-amber-300">Geração de ATP (Quinases)</span>
+                <span class="px-2 py-1 bg-pink-900 border border-pink-700 rounded text-pink-300">Válvulas Tioesterases</span>
+                <span class="px-2 py-1 bg-teal-900 border border-teal-700 rounded text-teal-300">VOCs e Hormônios</span>
+                <span class="px-2 py-1 bg-red-900 border border-red-700 rounded text-red-300">Guerra Química</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow p-4 md:p-6 max-w-[100vw] mx-auto w-full">
+        
+        <div class="mb-4 text-sm text-slate-700 bg-amber-50 border border-amber-200 p-4 rounded-lg flex items-start gap-3 shadow-sm">
+            <svg class="w-6 h-6 text-amber-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            <div>
+                <strong>Rede Integrada 4:</strong> Este eixo revela como a bactéria atua como a "lixeira e o boticário" da rizosfera. Ela consome lipídios mortos, toxinas e o gigantesco pool de piruvato para alimentar usinas de energia acopladas a quinases (pta-ackA, ptb-buk). Ao saturar a energia, válvulas de segurança (tioesterases e acyP) são abertas. O transbordamento jorra ácidos graxos de cadeia curta (SCFAs) que atuam como fungicidas formidáveis, além de liberar voláteis (VOCs), Auxina e Arilpolienos que induzem o crescimento da planta e a blindam contra o estresse oxidativo.
+            </div>
+        </div>
+
+        <div class="mermaid-container" id="pan-container">
+            <div class="mermaid flex justify-center min-w-max">
+                flowchart TD
+                    classDef insumo fill:#f8fafc,stroke:#64748b,stroke-width:2px,color:#0f172a,rx:8px,ry:8px,stroke-dasharray: 4 4;
+                    classDef enzima fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#052e16,rx:4px,ry:4px,font-weight:bold;
+                    classDef energia fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12,rx:8px,ry:8px,font-weight:bold;
+                    classDef valvula fill:#fce7f3,stroke:#be185d,stroke-width:2px,color:#500724,rx:8px,ry:8px,font-weight:bold;
+                    classDef produto fill:#ccfbf1,stroke:#0f766e,stroke-width:2px,color:#042f2e,rx:4px,ry:4px,font-weight:bold;
+                    classDef acido fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#7f1d1d,rx:4px,ry:4px,font-weight:bold;
+                    classDef impacto fill:#eff6ff,stroke:#2563eb,stroke-width:3px,color:#1e3a8a,rx:8px,ry:8px,font-weight:bold;
+
+                    subgraph Mod1 ["1. Reciclagem e Hubs de Carbono Primário"]
+                        direction LR
+                        IN_PIR["Hub Piruvato<br/>(Ponto de convergência global)"]:::insumo
+                        IN_LIP["Lipídios e Células Mortas<br/>(Matéria orgânica degradada)"]:::insumo
+                        IN_TRIP["Triptofano / Valina<br/>(Sinais radiculares)"]:::insumo
+                    end
+
+                    subgraph Mod2 ["2. Biorrefinaria e Motores de Clivagem"]
+                        direction TB
+                        E_PDH["Complexo PDH | poxL<br/>Descarboxilação do Piruvato"]:::enzima
+                        E_BETA["Beta-Oxidação (bcd, 8 Parálogos)<br/>Triturador de Cadeias Lipídicas Ímpares e Pares"]:::enzima
+                        
+                        POOL_COA["Pools Centrais de Acil-CoA<br/>Acetil-CoA, Propionil-CoA, Butiril-CoA"]:::insumo
+                    end
+
+                    subgraph Mod3 ["3. Eixos de Ejeção (Energia vs. Transbordamento)"]
+                        direction LR
+                        subgraph Vias_Energia ["Via Quinase (ATP)"]
+                            direction TB
+                            K_PTA["pta / ackA<br/>Geração de Acetato e Propionato"]:::energia
+                            K_PTB["ptb / buk<br/>Geração de Butirato"]:::energia
+                        end
+                        
+                        subgraph Vias_Valvula ["Via Tioesterase (Alívio)"]
+                            direction TB
+                            V_ACYP["acyP | yccX (Acilfosfatase)<br/>Válvula de Acetato Extrema"]:::valvula
+                            V_MENI["menI | tesA | ybgC<br/>Válvulas de Butirato/Valerato"]:::valvula
+                        end
+                    end
+
+                    subgraph Mod4 ["4. Arsenal Químico e Co-Produtos de Alto Valor"]
+                        direction LR
+                        SCFA["Ácidos Graxos de Cadeia Curta (SCFAs)<br/>Acético, Propiônico, Butírico e Valérico"]:::acido
+                        VOCS["Compostos Voláteis (VOCs)<br/>Acetoína e 2,3-Butanodiol"]:::produto
+                        COPROD["Bioprotetores<br/>Vitamina K2, Arilpolienos e Auxina (AIA)"]:::produto
+                    end
+
+                    subgraph Mod5 ["5. Guerra Biológica e Fitoestimulação"]
+                        direction LR
+                        OUT_DEF["Ação Fungicida e Bactericida<br/>Asfixia e monopólio competitivo da rizosfera"]:::impacto
+                        OUT_SOL["Acidificação Localizada<br/>Dissolução de Fosfatos via SCFAs livres"]:::impacto
+                        OUT_ISR["Crescimento e Imunidade<br/>Indução de ISR (VOCs), Alongamento (AIA)<br/>e Blindagem Anti-ROS (Arilpolienos/Vit K2)"]:::impacto
+                    end
+
+                    %% Fluxos do Insumo para Enzimas
+                    IN_PIR --> E_PDH
+                    IN_LIP --> E_BETA
+                    IN_TRIP -.-> E_PDH
+                    IN_TRIP -.-> E_BETA
+
+                    %% Dos Motores para o Pool CoA
+                    E_PDH ===> POOL_COA
+                    E_BETA ===> POOL_COA
+                    E_PDH -.->|"Derivação Estequiométrica"| VOCS
+
+                    %% Do Pool CoA para as Vias de Saída
+                    POOL_COA ===>|"Fluxo Primário"| K_PTA
+                    POOL_COA ===>|"Fluxo Primário"| K_PTB
+                    POOL_COA ===>|"Excesso Metabólico"| V_ACYP
+                    POOL_COA ===>|"Excesso Metabólico"| V_MENI
+
+                    %% Vias para os Produtos
+                    K_PTA ===> SCFA
+                    K_PTB ===> SCFA
+                    V_ACYP ===> SCFA
+                    V_MENI ===> SCFA
+
+                    %% Derivações das Válvulas
+                    V_MENI -.->|"Síntese Acoplada"| COPROD
+                    E_PDH -.->|"Via poxL / Triptofano"| COPROD
+
+                    %% Impactos Agronômicos
+                    SCFA ===>|"Barreira Tóxica a Invasores"| OUT_DEF
+                    SCFA ===>|"Onda de Choque Ácida"| OUT_SOL
+                    VOCS ===>|"Gases Elicitores"| OUT_ISR
+                    COPROD ===>|"Hormônios e Escudos Celulares"| OUT_ISR
+            </div>
+        </div>
+    </main>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'base',
+            themeVariables: {
+                fontFamily: 'Inter, sans-serif',
+                lineColor: '#64748b'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                nodeSpacing: 50,
+                rankSpacing: 60
+            }
+        });
+
+        const slider = document.getElementById('pan-container');
+        let isDown = false;
+        let startX;
+        let startY;
+        let scrollLeft;
+        let scrollTop;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            startY = e.pageY - slider.offsetTop;
+            scrollLeft = slider.scrollLeft;
+            scrollTop = slider.scrollTop;
+        });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const y = e.pageY - slider.offsetTop;
+            const walkX = (x - startX) * 2;
+            const walkY = (y - startY) * 2;
+            slider.scrollLeft = scrollLeft - walkX;
+            slider.scrollTop = scrollTop - walkY;
+        });
+    </script>
+</body>
+</html>

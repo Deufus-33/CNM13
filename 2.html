@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super-Sistema 2: O Eixo do TCA - CNM13</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; }
+        .mermaid-container {
+            width: 100%;
+            height: calc(100vh - 160px);
+            overflow: auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            cursor: grab;
+        }
+        .mermaid-container:active { cursor: grabbing; }
+        .mermaid svg {
+            max-width: none !important;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="text-slate-800 flex flex-col min-h-screen">
+    
+    <header class="bg-slate-900 text-white p-5 shadow-xl shrink-0 border-b-4 border-rose-500">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-2xl font-bold tracking-tight">Super-Sistema 2: O Eixo do Ciclo de Krebs e Artilharia Pesada</h1>
+                <p class="text-rose-300 text-sm mt-1">Integração dos Ácidos Di e Tricarboxílicos e Suas Permeases de Efluxo</p>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[10px] uppercase tracking-wider font-bold">
+                <span class="px-2 py-1 bg-slate-800 border border-slate-600 rounded text-slate-300">Anaplerose e TCA</span>
+                <span class="px-2 py-1 bg-red-900 border border-red-700 rounded text-red-300">Ácidos C4, C5 e C6</span>
+                <span class="px-2 py-1 bg-purple-900 border border-purple-700 rounded text-purple-300">Bombas MFS e DASS</span>
+                <span class="px-2 py-1 bg-blue-900 border border-blue-700 rounded text-blue-300">Quelação Extrema</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow p-4 md:p-6 max-w-[100vw] mx-auto w-full">
+        
+        <div class="mb-4 text-sm text-slate-700 bg-rose-50 border border-rose-200 p-4 rounded-lg flex items-start gap-3 shadow-sm">
+            <svg class="w-6 h-6 text-rose-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+            <div>
+                <strong>Rede Integrada 2:</strong> Este super-sistema expõe o maquinário pesado de intemperismo. O Ciclo de Krebs (TCA) é redirecionado para forjar ácidos orgânicos de altíssima afinidade metálica[cite: 10, 19]. A exportação desses ácidos é gerenciada pela permease <code>dctA</code> para dicarboxilatos C4[cite: 3, 5], pelo complexo <code>citN</code> para tricarboxilatos[cite: 8], e pelos engenhosos simportadores DASS (<code>yflS</code>, <code>maeN</code>), que capitalizam o estresse salino para empurrar os solventes minerais contra o gradiente edáfico.
+            </div>
+        </div>
+
+        <div class="mermaid-container" id="pan-container">
+            <div class="mermaid flex justify-center min-w-max">
+                flowchart TD
+                    classDef insumo fill:#f8fafc,stroke:#64748b,stroke-width:2px,color:#0f172a,rx:8px,ry:8px,stroke-dasharray: 4 4;
+                    classDef motor fill:#ffe4e6,stroke:#e11d48,stroke-width:2px,color:#4c0519,rx:8px,ry:8px,font-weight:bold;
+                    classDef acido fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#7f1d1d,rx:4px,ry:4px;
+                    classDef transporte fill:#f3e8ff,stroke:#9333ea,stroke-width:2px,color:#4c1d95,rx:12px,ry:12px,font-weight:bold;
+                    classDef symport fill:#fef08a,stroke:#b45309,stroke-width:2px,color:#451a03,rx:12px,ry:12px,font-weight:bold;
+                    classDef impacto fill:#eff6ff,stroke:#2563eb,stroke-width:3px,color:#1e3a8a,rx:8px,ry:8px,font-weight:bold;
+
+                    subgraph Mod1 ["1. Retroalimentação de Carbono e Válvulas"]
+                        direction LR
+                        IN_SUG["Fosfoenolpiruvato e Piruvato<br/>(Glicólise)"]:::insumo
+                        IN_EXS["Malato, Succinato e Aconitato<br/>(Captação de Exsudatos Plantares)"]:::insumo
+                    end
+
+                    subgraph Mod2 ["2. A Grande Roda (TCA e Atalhos)"]
+                        direction TB
+                        ANAPLEROSE["Válvulas Anapleróticas<br/>pckA | pyc (Fixação de CO2 e ATP)"]:::motor
+                        TCA_OX["Frente Oxidativa e Condensação<br/>gltA | acnA | icd"]:::motor
+                        TCA_RED["Frente Redutiva e Bypasses<br/>mdh | mqo | fumA/B/C | aceA | aarC"]:::motor
+                    end
+
+                    subgraph Mod3 ["3. Os Pools de Ácidos Orgânicos Pesados"]
+                        direction LR
+                        POOL_C4["Dicarboxilatos C4<br/>Málico, Succínico, Fumárico, Tartárico,<br/>Oxaloacético, Malônico"]:::acido
+                        POOL_C5["Dicarboxilatos C5<br/>Cetoglutárico (Oxoglutarato)"]:::acido
+                        POOL_C6["Tricarboxilatos C6<br/>Cítrico, Aconítico"]:::acido
+                    end
+
+                    subgraph Mod4 ["4. Bombas Transmembrana de Efluxo"]
+                        direction TB
+                        MFS_C4["Transportadores MFS de Amplo Espectro<br/>dctA (Principal C4) | ttuB | mdcF"]:::transporte
+                        MFS_C6["Permeases C5 e C6<br/>citN (Citrato) | kgtP (Cetoglutarato)"]:::transporte
+                        DASS["Família DASS (Simporte Iônico)<br/>yflS | maeN<br/>Acoplamento Termodinâmico ao Na+"]:::symport
+                    end
+
+                    subgraph Mod5 ["5. Geobiologia Rizosférica"]
+                        direction LR
+                        QUELACAO["Quelação Extrema<br/>Complexos Hiperestáveis com Ca2+, Fe3+, Al3+<br/>Libertação de Ortofosfato (Pi)"]:::impacto
+                        RESILIENCIA["Tamponamento Osmótico / Iônico<br/>Esvaziamento de Na+, Ca2+ e Mg2+<br/>Proteção contra Salinidade"]:::impacto
+                        SINALIZACAO["Fitoestimulação Cruzada<br/>Auxina (AIA) via Indol-3-acetaldeído<br/>e Resistência Sistêmica"]:::impacto
+                    end
+
+                    %% Alimentação do TCA
+                    IN_SUG -->|"Fixação Carbônica"| ANAPLEROSE
+                    IN_EXS -.->|"Reciclagem Direta"| TCA_OX
+                    IN_EXS -.->|"Reciclagem Direta"| TCA_RED
+
+                    %% Dinâmica do TCA
+                    ANAPLEROSE ===>|"Hub de Oxaloacetato"| TCA_OX
+                    ANAPLEROSE ===>|"Hub de Oxaloacetato"| TCA_RED
+                    TCA_OX <==>|"Ciclo Central"| TCA_RED
+
+                    %% Síntese de Ácidos
+                    TCA_RED ===> POOL_C4
+                    TCA_OX ===> POOL_C5
+                    TCA_OX ===> POOL_C6
+
+                    %% Transporte e Efluxo
+                    POOL_C4 --> MFS_C4
+                    POOL_C4 -->|"Ativados pelo Sal"| DASS
+                    
+                    POOL_C5 --> MFS_C6
+                    POOL_C5 -->|"Ativados pelo Sal"| DASS
+                    
+                    POOL_C6 --> MFS_C6
+
+                    %% Impactos
+                    MFS_C4 ===> QUELACAO
+                    MFS_C6 ===> QUELACAO
+                    DASS ===> QUELACAO
+                    
+                    MFS_C6 -.->|"Efluxo Co-mediado"| RESILIENCIA
+                    DASS ===>|"Limpeza Celular de Sódio"| RESILIENCIA
+                    
+                    ANAPLEROSE -.->|"Derivação Pleiotrópica (pyc)"| SINALIZACAO
+            </div>
+        </div>
+    </main>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'base',
+            themeVariables: {
+                fontFamily: 'Inter, sans-serif',
+                lineColor: '#64748b'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                nodeSpacing: 50,
+                rankSpacing: 60
+            }
+        });
+
+        const slider = document.getElementById('pan-container');
+        let isDown = false;
+        let startX;
+        let startY;
+        let scrollLeft;
+        let scrollTop;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            startY = e.pageY - slider.offsetTop;
+            scrollLeft = slider.scrollLeft;
+            scrollTop = slider.scrollTop;
+        });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const y = e.pageY - slider.offsetTop;
+            const walkX = (x - startX) * 2;
+            const walkY = (y - startY) * 2;
+            slider.scrollLeft = scrollLeft - walkX;
+            slider.scrollTop = scrollTop - walkY;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interação de Super-Sistemas - CNM13</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .mermaid-container {
+            width: 100%;
+            height: calc(100vh - 160px);
+            overflow: auto;
+            background-color: #1e293b;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            cursor: grab;
+        }
+        .mermaid-container:active { cursor: grabbing; }
+        .mermaid svg {
+            max-width: none !important;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    
+    <header class="bg-slate-950 p-5 shadow-2xl shrink-0 border-b-4 border-indigo-500">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-3xl font-extrabold tracking-tight text-white">O Teorema Metabólico: Interação de Super-Sistemas</h1>
+                <p class="text-indigo-400 text-sm mt-1 font-medium">Priestia aryabhattai CNM13 - Arquitetura de Sistemas Integrados</p>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[10px] uppercase tracking-wider font-bold">
+                <span class="px-2 py-1 bg-emerald-950 border border-emerald-700 rounded text-emerald-400">SS1: Inteligência</span>
+                <span class="px-2 py-1 bg-rose-950 border border-rose-700 rounded text-rose-400">SS2: Coração Metabólico</span>
+                <span class="px-2 py-1 bg-cyan-950 border border-cyan-700 rounded text-cyan-400">SS3: Forças Especiais</span>
+                <span class="px-2 py-1 bg-amber-950 border border-amber-700 rounded text-amber-400">SS4: Válvulas e Defesa</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow p-4 md:p-6 max-w-[100vw] mx-auto w-full">
+        
+        <div class="mb-4 text-sm text-slate-300 bg-slate-800 border border-slate-700 p-4 rounded-lg flex items-start gap-3 shadow-sm">
+            <svg class="w-6 h-6 text-indigo-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+            <div>
+                <strong class="text-indigo-300">A Grande Matriz Genômica:</strong> Este é o nível mais alto de abstração do projeto. Aqui, cada Super-Sistema atua como um único nó biológico. Observe a hierarquia de comando: o <strong>SS1</strong> (cérebro) aciona toda a célula[cite: 23]. O <strong>SS2</strong> realiza o trabalho pesado e, ao saturar a célula de energia, empurra o excesso metabólico para o <strong>SS4</strong>, que transforma esse "lixo energético" em gases protetores e ácidos de guerra[cite: 13, 17, 19]. Em paralelo, o <strong>SS3</strong> cria um guarda-chuva antioxidante[cite: 6, 11]. O resultado final é a convergência absoluta para o Intemperismo Mineral e o Condicionamento Rizosférico.
+            </div>
+        </div>
+
+        <div class="mermaid-container" id="pan-container">
+            <div class="mermaid flex justify-center min-w-max">
+                flowchart TD
+                    %% Tema Dark para o Mapa Final
+                    classDef ss1 fill:#064e3b,stroke:#34d399,stroke-width:3px,color:#ecfdf5,rx:12px,ry:12px,font-weight:bold;
+                    classDef ss2 fill:#4c0519,stroke:#fb7185,stroke-width:3px,color:#fff1f2,rx:12px,ry:12px,font-weight:bold;
+                    classDef ss3 fill:#164e63,stroke:#22d3ee,stroke-width:3px,color:#ecfeff,rx:12px,ry:12px,font-weight:bold;
+                    classDef ss4 fill:#78350f,stroke:#fbbf24,stroke-width:3px,color:#fffbeb,rx:12px,ry:12px,font-weight:bold;
+                    classDef input fill:#1e293b,stroke:#64748b,stroke-width:2px,color:#f8fafc,rx:8px,ry:8px,stroke-dasharray: 4 4;
+                    classDef output fill:#172554,stroke:#60a5fa,stroke-width:3px,color:#eff6ff,rx:8px,ry:8px,font-weight:bold;
+
+                    subgraph Entradas ["Estímulos Ambientais"]
+                        direction LR
+                        IN_PI["Sinal Primário:<br/>Privação Severa de Fósforo (Pi)"]:::input
+                        IN_CARB["Insumos da Planta:<br/>Carbono, Exsudatos, Toxinas e DNA/RNA"]:::input
+                    end
+
+                    %% Nódulos de Super-Sistemas
+                    SS1["SUPER-SISTEMA 1<br/>Inteligência Sensora & Mineralização<br/>(Regulon Pho, Fosfatases, C-P Liase)"]:::ss1
+                    SS2["SUPER-SISTEMA 2<br/>Eixo do TCA & Quelação Pesada<br/>(Ácidos C4/C5/C6, Bombas MFS/DASS)"]:::ss2
+                    SS3["SUPER-SISTEMA 3<br/>Forças Especiais & Infiltração<br/>(Via PQQ, Ácidos Leves/Aldônicos)"]:::ss3
+                    SS4["SUPER-SISTEMA 4<br/>Válvulas de Alívio & Biodefesa<br/>(Tioesterases, SCFAs, VOCs)"]:::ss4
+
+                    subgraph Saidas ["Resultado Agronômico"]
+                        direction LR
+                        OUT_SOL["Intemperismo & Solubilização<br/>(Liberação Massiva de Fósforo e Potássio)"]:::output
+                        OUT_DEF["Condicionamento Rizosférico<br/>(Imunidade da Planta, Defesa e Resiliência)"]:::output
+                    end
+
+                    %% Interações de Entrada
+                    IN_PI -->|"Gatilho de Sobrevivência (Sensor Transmembrana)"| SS1
+                    IN_CARB -->|"Combustível de Massa"| SS2
+                    IN_CARB -->|"Glicose/Toxinas"| SS3
+
+                    %% O Cérebro Comandando os Sistemas
+                    SS1 ===>|"Regulação Transcricional Global<br/>(Ativa Motores e Operons)"| SS2
+                    SS1 ===>|"Up-regulation de Permeases"| SS3
+                    SS1 ===>|"Ativação de Vias de Resgate"| SS4
+
+                    %% Interação Central entre os Motores
+                    SS2 ===>|"Transbordamento Metabólico<br/>(Excesso de Acetil-CoA e ATP satura a célula)"| SS4
+                    SS2 -.->|"Compartilha Esqueletos Carbônicos"| SS3
+
+                    %% A Proteção Antioxidante
+                    SS3 -.->|"Blindagem Antioxidante (Vit C)<br/>Protege a Maquinaria Citosólica contra ROS"| SS2
+                    SS3 -.->|"Desintoxicação Prévia<br/>(Varre Fosfoglicolato e Metilglioxal)"| SS4
+
+                    %% Convergência para os Impactos
+                    SS1 ===>|"Clivagem Enzimática P-O e C-P"| OUT_SOL
+                    SS2 ===>|"Quelação Físico-Química de Ca/Fe/Al"| OUT_SOL
+                    SS3 ===>|"Infiltração de Ácidos em Microporos"| OUT_SOL
+                    
+                    SS4 ===>|"Guerra Química (Onda de SCFAs Fungicidas)"| OUT_DEF
+                    SS4 ===>|"Sinalização Simbiótica (VOCs e Hormônios AIA)"| OUT_DEF
+                    SS3 -.->|"Osmoproteção Abiótica (Prolina)"| OUT_DEF
+                    SS2 -.->|"Alívio do Estresse Salino (Bomba de Na+)"| OUT_DEF
+            </div>
+        </div>
+    </main>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'dark',
+            themeVariables: {
+                fontFamily: 'Inter, sans-serif',
+                lineColor: '#94a3b8'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                nodeSpacing: 70,
+                rankSpacing: 90
+            }
+        });
+
+        // Pan e Zoom Integrados
+        const slider = document.getElementById('pan-container');
+        let isDown = false;
+        let startX;
+        let startY;
+        let scrollLeft;
+        let scrollTop;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            startY = e.pageY - slider.offsetTop;
+            scrollLeft = slider.scrollLeft;
+            scrollTop = slider.scrollTop;
+        });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const y = e.pageY - slider.offsetTop;
+            const walkX = (x - startX) * 2;
+            const walkY = (y - startY) * 2;
+            slider.scrollLeft = scrollLeft - walkX;
+            slider.scrollTop = scrollTop - walkY;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super-Sistema 3: Via PQQ e Ácidos Hidroxílicos - CNM13</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; }
+        .mermaid-container {
+            width: 100%;
+            height: calc(100vh - 160px);
+            overflow: auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            cursor: grab;
+        }
+        .mermaid-container:active { cursor: grabbing; }
+        .mermaid svg {
+            max-width: none !important;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="text-slate-800 flex flex-col min-h-screen">
+    
+    <header class="bg-slate-900 text-white p-5 shadow-xl shrink-0 border-b-4 border-cyan-500">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-2xl font-bold tracking-tight">Super-Sistema 3: Oxidação Direta (PQQ) e Quelantes Aldônicos</h1>
+                <p class="text-cyan-300 text-sm mt-1">Integração dos Ácidos Glicônico, Glicólico, Láctico e Galactônico</p>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[10px] uppercase tracking-wider font-bold">
+                <span class="px-2 py-1 bg-slate-800 border border-slate-600 rounded text-slate-300">Oxidação Extracelular</span>
+                <span class="px-2 py-1 bg-cyan-900 border border-cyan-700 rounded text-cyan-300">Alta Mobilidade Espacial</span>
+                <span class="px-2 py-1 bg-purple-900 border border-purple-700 rounded text-purple-300">Efluxo MFS Acoplado</span>
+                <span class="px-2 py-1 bg-blue-900 border border-blue-700 rounded text-blue-300">Vitamina C e Prolina</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow p-4 md:p-6 max-w-[100vw] mx-auto w-full">
+        
+        <div class="mb-4 text-sm text-slate-700 bg-cyan-50 border border-cyan-200 p-4 rounded-lg flex items-start gap-3 shadow-sm">
+            <svg class="w-6 h-6 text-cyan-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+            <div>
+                <strong>Rede Integrada 3:</strong> Este eixo documenta a produção de "quelantes leves e multifuncionais". O destaque é a Via <strong>PQQ</strong>, onde a bactéria oxida a glicose da raiz no meio extracelular, poupando ATP interno. A mesma via é interligada à produção de Ácido Glicólico (a partir de lesões de DNA ou falhas da RuBisCO) e Ácido Láctico (em resposta à asfixia/hipóxia e desintoxicação)[cite: 15]. As permeases especializadas garantem efluxo sob falhas elétricas, blindando a rizosfera com Vitamina C[cite: 1] e Prolina[cite: 6].
+            </div>
+        </div>
+
+        <div class="mermaid-container" id="pan-container">
+            <div class="mermaid flex justify-center min-w-max">
+                flowchart TD
+                    classDef insumo fill:#f8fafc,stroke:#64748b,stroke-width:2px,color:#0f172a,rx:8px,ry:8px,stroke-dasharray: 4 4;
+                    classDef pqq fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#713f12,rx:8px,ry:8px,font-weight:bold;
+                    classDef enzima fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#052e16,rx:4px,ry:4px;
+                    classDef transporte fill:#f3e8ff,stroke:#9333ea,stroke-width:2px,color:#4c1d95,rx:12px,ry:12px,font-weight:bold;
+                    classDef acido fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#7f1d1d,rx:4px,ry:4px,font-weight:bold;
+                    classDef impacto fill:#eff6ff,stroke:#2563eb,stroke-width:3px,color:#1e3a8a,rx:8px,ry:8px,font-weight:bold;
+
+                    subgraph Mod1 ["1. Fontes Radiculares e Gatilhos de Estresse"]
+                        direction LR
+                        IN_GLI["D-Glicose Livre<br/>(Exsudato Primário)"]:::insumo
+                        IN_GAL["Ácido Galactônico<br/>(Origem Vegetal)"]:::insumo
+                        IN_AER["Estresse Aeróbico / RuBisCO<br/>(Lesão de DNA / Fotorrespiração)"]:::insumo
+                        IN_HIP["Hipóxia / Fome de Pi<br/>(Acúmulo Tóxico de Metilglioxal)"]:::insumo
+                    end
+
+                    subgraph Mod2 ["2. Complexo Holoenzimático e Desintoxicação Intracelular"]
+                        direction TB
+                        ENZ_PQQ["argD + pqqL<br/>Síntese e Maturação de Cofator PQQ"]:::enzima
+                        HOLO_GDH["Complexo Holo-GDH<br/>Oxidação Direta Extracelular"]:::pqq
+                        
+                        ENZ_GPH["gph + rbcL (RuBisCO)<br/>Desintoxicação de Fosfoglicolato"]:::enzima
+                        ENZ_GLOB["mgsA + gloB/gloC<br/>Ciclo do Metilglioxal (Detox de MGO)"]:::enzima
+                        ENZ_LDH["ldh (Lactato Desidrogenase)<br/>Pêndulo Fermentativo (Regenera NAD+)"]:::enzima
+                        ENZ_DKGA["gnl + dkgA<br/>Hidrólise de Lactonas e Modulação Oxidativa"]:::enzima
+                    end
+
+                    subgraph Mod3 ["3. O Pool de Ácidos Mono/Aldônicos"]
+                        direction LR
+                        A_GLICON["Ácidos Glicônico e Cetoglicônico<br/>(Forte ação acidificante)"]:::acido
+                        A_GLICOL["Ácido Glicólico<br/>(Menor Massa Molecular)"]:::acido
+                        A_LACT["Ácido Láctico<br/>(Alfa-hidroxiácido)"]:::acido
+                        A_GALACT["Ácido Galactônico Intracelular"]:::acido
+                    end
+
+                    subgraph Mod4 ["4. Permeases de Efluxo e Resiliência"]
+                        direction TB
+                        T_GNTP["TC_GNTP (Simporte Gliconato/H⁺)<br/>Mitiga Estresse Osmótico"]:::transporte
+                        T_LCTP["lctP | lldP (Permease Reguladora)<br/>Domínio GntR (Regulação Eletroquímica)"]:::transporte
+                        T_DGOT["dgoT | lgoT (Superfamília MFS)<br/>Efluxo Redundante contra Flutuações"]:::transporte
+                    end
+
+                    subgraph Mod5 ["5. Geobiologia de Infiltração e Blindagem"]
+                        direction LR
+                        IMP_INFILT["Mobilidade e Infiltração<br/>Penetração em Microporos da Rocha"]:::impacto
+                        IMP_QUEL["Quelação Aldônica e Hidroxílica<br/>Sequestro Sinérgico de Ca²⁺, Fe³⁺ e Al³⁺"]:::impacto
+                        IMP_PROT["Bioproteção Avançada<br/>Prolina (Osmoprotetor) e Vitamina C (Anti-ROS)"]:::impacto
+                    end
+
+                    %% Glicônico e PQQ
+                    IN_GLI -->|"Processamento Periplasmático"| HOLO_GDH
+                    ENZ_PQQ ===>|"Ativação da Apoenzima"| HOLO_GDH
+                    HOLO_GDH ===>|"D-glucono-1,5-lactona"| ENZ_DKGA
+                    ENZ_DKGA ===>|"Biorrefinaria"| A_GLICON
+                    
+                    %% Glicólico
+                    IN_AER -->|"Lixo Tóxico"| ENZ_GPH
+                    ENZ_GPH ===>|"Desfosforilação"| A_GLICOL
+                    
+                    %% Láctico
+                    IN_HIP --> ENZ_GLOB
+                    IN_HIP --> ENZ_LDH
+                    ENZ_GLOB ===> A_LACT
+                    ENZ_LDH ===> A_LACT
+
+                    %% Galactônico
+                    IN_GAL -.->|"Transporte Basal"| A_GALACT
+
+                    %% Transporte
+                    A_GLICON --> T_GNTP
+                    A_LACT --> T_LCTP
+                    A_GALACT --> T_DGOT
+
+                    %% Impactos
+                    A_GLICOL ===>|"Difusão Acelerada"| IMP_INFILT
+                    IMP_INFILT ===> IMP_QUEL
+                    
+                    T_GNTP ===> IMP_QUEL
+                    T_LCTP ===> IMP_QUEL
+                    T_DGOT ===> IMP_QUEL
+
+                    %% Vantagens Biotecnológicas Pleiotrópicas
+                    ENZ_PQQ -.->|"Derivação (argD)"| IMP_PROT
+                    ENZ_DKGA -.->|"Derivação Ascórbica (dkgA)"| IMP_PROT
+            </div>
+        </div>
+    </main>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'base',
+            themeVariables: {
+                fontFamily: 'Inter, sans-serif',
+                lineColor: '#64748b'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                nodeSpacing: 50,
+                rankSpacing: 60
+            }
+        });
+
+        const slider = document.getElementById('pan-container');
+        let isDown = false;
+        let startX;
+        let startY;
+        let scrollLeft;
+        let scrollTop;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            startY = e.pageY - slider.offsetTop;
+            scrollLeft = slider.scrollLeft;
+            scrollTop = slider.scrollTop;
+        });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const y = e.pageY - slider.offsetTop;
+            const walkX = (x - startX) * 2;
+            const walkY = (y - startY) * 2;
+            slider.scrollLeft = scrollLeft - walkX;
+            slider.scrollTop = scrollTop - walkY;
+        });
+    </script>
+</body>
+</html>

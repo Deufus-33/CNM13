@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Metabólico Master: Priestia aryabhattai CNM13</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; }
+        .mermaid-container {
+            width: 100%;
+            height: calc(100vh - 160px);
+            overflow: auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            cursor: grab;
+        }
+        .mermaid-container:active { cursor: grabbing; }
+        .mermaid svg {
+            max-width: none !important;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="text-slate-800 flex flex-col min-h-screen">
+    
+    <header class="bg-slate-900 text-white p-5 shadow-xl shrink-0 border-b-4 border-emerald-500">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-3xl font-extrabold tracking-tight">Atlas Metabólico Master: Inteligência e Solubilização</h1>
+                <p class="text-emerald-300 text-sm mt-1 font-medium">Priestia aryabhattai CNM13 - Síntese Executiva Completa</p>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[10px] uppercase tracking-wider font-bold">
+                <span class="px-2 py-1 bg-slate-800 border border-slate-600 rounded text-slate-300">Inteligência Sensora</span>
+                <span class="px-2 py-1 bg-emerald-900 border border-emerald-700 rounded text-emerald-300">Motores Orgânicos e Inorgânicos</span>
+                <span class="px-2 py-1 bg-purple-900 border border-purple-700 rounded text-purple-300">Arsenal de Hidrolases e Ácidos</span>
+                <span class="px-2 py-1 bg-blue-900 border border-blue-700 rounded text-blue-300">Impacto Agronômico</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow p-4 md:p-6 max-w-[100vw] mx-auto w-full">
+        
+        <div class="mb-4 text-sm text-slate-700 bg-emerald-50 border border-emerald-200 p-4 rounded-lg flex items-start gap-3 shadow-sm">
+            <svg class="w-6 h-6 text-emerald-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            <div>
+                <strong class="text-emerald-900">A Máquina Perfeita de Fósforo:</strong> Este Atlas funde a totalidade do genoma solubilizador da cepa. Tudo começa na <strong>Camada 1</strong>, onde o Regulon Pho detecta a fome de fósforo. A partir daí, a bactéria mobiliza <strong>4 Motores Orgânicos</strong> e <strong>Sistemas Inorgânicos</strong> (Camada 2), forjando um <strong>Coquetel Químico e Enzimático</strong> avassalador (Camada 3). O resultado ejetado (Camada 4) mineraliza fração orgânica, destrói minerais inorgânicos e impulsiona o vigor da planta (Camada 5).
+            </div>
+        </div>
+
+        <div class="mermaid-container" id="pan-container">
+            <div class="mermaid flex justify-center min-w-max">
+                flowchart TD
+                    %% Definições de Classes
+                    classDef reg fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12,rx:8px,ry:8px,font-weight:bold;
+                    classDef insumo fill:#f8fafc,stroke:#64748b,stroke-width:2px,color:#0f172a,rx:8px,ry:8px,stroke-dasharray: 5 5;
+                    classDef motor fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#064e3b,rx:8px,ry:8px,font-weight:bold;
+                    classDef acido fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#7f1d1d,rx:4px,ry:4px;
+                    classDef enzima fill:#e0e7ff,stroke:#4f46e5,stroke-width:2px,color:#1e1b4b,rx:8px,ry:8px,font-weight:bold;
+                    classDef transporte fill:#f3e8ff,stroke:#9333ea,stroke-width:2px,color:#4c1d95,rx:12px,ry:12px,font-weight:bold;
+                    classDef impacto fill:#eff6ff,stroke:#2563eb,stroke-width:3px,color:#1e3a8a,rx:8px,ry:8px,font-weight:bold;
+
+                    subgraph Camada1 ["1. O Cérebro da Cepa (Percepção e Gatilhos)"]
+                        direction LR
+                        IN_FOME["Escassez de Fósforo (Fome de Pi)"]:::insumo
+                        IN_EXS["Exsudatos e Detritos<br/>(Açúcares, Ácidos C4, Toxinas, DNA/RNA morto)"]:::insumo
+                        CEREBRO["Sistema Regulon Pho (phoR/phoP)<br/>Gatilho Global de Transcrição Celular"]:::reg
+                    end
+
+                    subgraph Camada2 ["2. Usinas Metabólicas (Processamento)"]
+                        direction LR
+                        M_PQQ["Usina 1: Oxidação Direta<br/>Via PQQ, RuBisCO e C-P Liase"]:::motor
+                        M_GLI["Usina 2: Glicólise e Válvulas<br/>Complexos PLP e Anaplerose"]:::motor
+                        M_ACOA["Usina 3: Eixo Acetil-CoA<br/>Beta-Oxidação e Carboxilases"]:::motor
+                        M_TCA["Usina 4: Ciclo de Krebs (TCA)<br/>Catálise Dicarboxílica"]:::motor
+                    end
+
+                    subgraph Camada3 ["3. A Forja do Arsenal (Química e Enzimas)"]
+                        direction LR
+                        A_MONO["Ácidos Leves<br/>Glicônico, Láctico, Acético, Valérico"]:::acido
+                        A_DI["Ácidos Pesados<br/>Málico, Succínico, Tartárico, Cítrico"]:::acido
+                        A_INORG["Armas Inorgânicas<br/>Ácidos Sulfúrico, Carbônico e Nítrico"]:::acido
+                        E_FOSF["Super-Hidrolases<br/>phoA, phoD, ppx, phoE (Quebra de P-O)"]:::enzima
+                    end
+
+                    subgraph Camada4 ["4. Linhas de Tiro (Efluxo Transmembrana)"]
+                        direction TB
+                        T_MFS["Superfamília MFS e Simportes<br/>Efluxo direcional de Ácidos Orgânicos"]:::transporte
+                        T_DASS["Família DASS (Hack de Sódio)<br/>Acoplamento Termodinâmico de Simporte"]:::transporte
+                        T_PST["Operon PST (Captura)<br/>Sistema de alta afinidade e Exclusão de Metais"]:::transporte
+                    end
+
+                    subgraph Camada5 ["5. Domínio Geobiológico e Agronômico"]
+                        direction LR
+                        OUT_ORG["Mineralização Orgânica<br/>Clivagem de Fitatos, Poli-P e Ácidos Nucleicos"]:::impacto
+                        OUT_INORG["Intemperismo Mineral<br/>Dissolução Extrema de Ca²⁺, Fe³⁺ e Al³⁺"]:::impacto
+                        OUT_RES["Blindagem Holística<br/>Esvaziamento de Na⁺, Vitamina C/B5, VOCs e AIA"]:::impacto
+                    end
+
+                    %% Percepção
+                    IN_FOME -->|"Ativação de Histidina Quinase"| CEREBRO
+                    IN_EXS -->|"Alimento/Sinalização"| M_GLI
+                    IN_EXS -->|"Alimento/Sinalização"| M_PQQ
+
+                    %% Cérebro ligando as máquinas
+                    CEREBRO ===>|"Destrava o Maquinário"| M_GLI
+                    CEREBRO ===>|"Ativação Enzimática"| E_FOSF
+                    CEREBRO ===>|"Montagem do Operon"| T_PST
+
+                    %% Usinas para o Arsenal
+                    M_GLI --> M_ACOA
+                    M_ACOA --> M_TCA
+
+                    M_PQQ ===>|"Oxidação/Gases"| A_MONO
+                    M_PQQ ===>|"Gases Edáficos"| A_INORG
+                    M_GLI ===> A_MONO
+                    M_TCA ===> A_DI
+                    
+                    %% Arsenal para Transporte / Ação
+                    A_MONO --> T_MFS
+                    A_DI --> T_MFS
+                    A_DI --> T_DASS
+                    
+                    %% Disparos
+                    T_MFS ===> OUT_INORG
+                    T_DASS ===> OUT_INORG
+                    T_DASS -.->|"Mitigação de Estresse"| OUT_RES
+                    
+                    A_INORG ===>|"Ação Direta no Solo"| OUT_INORG
+                    E_FOSF ===>|"Hidrólise Enzimática no Solo"| OUT_ORG
+                    
+                    %% Benefícios Bônus das Usinas
+                    M_ACOA -.->|"Subprodutos (Vitamina K, VOCs)"| OUT_RES
+                    M_TCA -.->|"Subprodutos (Vitamina C, Auxina)"| OUT_RES
+            </div>
+        </div>
+    </main>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'base',
+            themeVariables: {
+                fontFamily: 'Inter, sans-serif',
+                lineColor: '#64748b'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                nodeSpacing: 60,
+                rankSpacing: 80
+            }
+        });
+
+        // Script de Pan/Zoom
+        const slider = document.getElementById('pan-container');
+        let isDown = false;
+        let startX;
+        let startY;
+        let scrollLeft;
+        let scrollTop;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            startY = e.pageY - slider.offsetTop;
+            scrollLeft = slider.scrollLeft;
+            scrollTop = slider.scrollTop;
+        });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const y = e.pageY - slider.offsetTop;
+            const walkX = (x - startX) * 2;
+            const walkY = (y - startY) * 2;
+            slider.scrollLeft = scrollLeft - walkX;
+            slider.scrollTop = scrollTop - walkY;
+        });
+    </script>
+</body>
+</html>
